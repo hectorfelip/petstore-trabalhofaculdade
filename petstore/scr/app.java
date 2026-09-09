@@ -12,10 +12,11 @@ public class app {
         System.out.println("1 - criar Tutor");
     }
     public static void main(String[] args){
+        ArrayList<Tutor> nList = new ArrayList<>(10);
         Scanner sc = new Scanner(System.in);
-        Tutor tutor = new Tutor();
+
         do {
-            ArrayList<Tutor> nList = new ArrayList<>(10);
+            
             menu();
             int choice = sc.nextInt();
             sc.nextLine();
