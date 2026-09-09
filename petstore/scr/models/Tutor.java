@@ -1,0 +1,60 @@
+package scr.models;
+
+public class Tutor {
+    private int id;
+    private String nome;
+    private String cpf;
+    private String email;
+    private String telefone;
+
+    public Tutor(){
+
+    }
+    public Tutor(int id, String nome, String cpf, String email, String telefone){
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
+    
+
+    public int getId(){
+        return id;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public String getCpf(){
+        return cpf;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getTelefone(){
+        return  telefone;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    public void setCpf(String cpf){
+        this.cpf = cpf;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setTelefone(String telefone){
+        this.telefone = telefone;
+    }
+
+}
