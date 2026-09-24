@@ -5,7 +5,7 @@ import scr.models.Tutor;
 public class TutorService {
 
 
-    public static Tutor criarTutor(int id,String nome, String cpf, String email, String telefone){
+    public Tutor criarTutor(int id,String nome, String cpf, String email, String telefone){
 
         Tutor nTutor = new Tutor();
         nTutor.setId(id);

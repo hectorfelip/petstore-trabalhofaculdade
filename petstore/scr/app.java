@@ -1,57 +1,61 @@
 package scr;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import scr.models.Tutor;
-import scr.services.TutorService;
+import scr.controler.PetStoreControler;
 
 public class app {
-    public static void menu(){
+    public static void menuPrincipal(){
         System.out.println("Menu:");
-        System.out.println("1 - criar Tutor");
+        System.out.println("1 - Sobre Tutores\n2 - Sobre Pets\n0 - sair");
     }
+
+    public static void menuTutores(){
+        System.out.println("Menu Tutores:");
+        System.out.println("1 - Cadastrar novo Tutor");
+    }
+
+    public static void menuPets(){
+        System.out.println("Menus Pets:");
+        System.out.println("1 - Cadastrar novo Pet");
+    }
+
     public static void main(String[] args){
-        ArrayList<Tutor> nList = new ArrayList<>(10);
+        PetStoreControler PetShopee = new PetStoreControler("PetShopee");
         Scanner sc = new Scanner(System.in);
 
         do {
             
-            menu();
+            menuPrincipal();
+
             int choice = sc.nextInt();
             sc.nextLine();
-            switch (choice) {
-                case 1:
-                    int id = nList.size() +1;
-                    System.out.println("Qual o nome do tutor?");
-                    String nome = sc.nextLine();
-                    System.out.println("Qual o cpf do Tutor?");
-                    String cpf = sc.nextLine();
-                    System.out.println("Qual o email do Tutor?");
-                    String email = sc.nextLine();
-                    System.out.println("Qual o telefone do Tutor?");
-                    String telefone = sc.nextLine();
-                    try {
-                        nList.add(TutorService.criarTutor(id,nome,cpf,email,telefone));
-                    } catch (Exception e) {
-                        System.out.println("Algum erro aconteceu!");
-                        e.printStackTrace();
-                    }
-                    System.out.println("Tutor criado!");
-                    
-                    break;
-            
-                default:
-                    break;
-            }
 
-            for (Tutor tutor2 : nList) {
-                System.out.println("===========================");
-                System.out.println(tutor2.getCpf());
-                System.out.println(tutor2.getNome());
-                System.out.println(tutor2.getId());
-                System.out.println(tutor2.getEmail());
-                System.out.println(tutor2.getTelefone());
+            switch (choice) {
+                case 1: {
+                    menuTutores();
+                    choice = sc.nextInt();
+                    sc.nextLine();
+                    switch (choice) {
+                        case 1 -> PetShopee.cadastroTutor();
+                        default -> System.out.println("Um numero entre as opções!");
+                    }
+
+                }
+                case 2:  {
+                    menuPets();
+                    choice = sc.nextInt();
+                    sc.nextLine();
+                    switch(choice){
+                        case 1 -> PetShopee.cadastroPet();
+                        default -> System.out.println("Um numero entre as opções!");
+                    }
+                }
+                case 0: {
+                    System.out.println("Saindo");
+                }
+                default: {
+                    System.out.println("Algum numero entre as opções!");
+                }
             }
         } while (true);
     }
